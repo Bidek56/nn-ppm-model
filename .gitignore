@@ -1,0 +1,4 @@
+
+*.ipynb
+debug.log
+*.db
