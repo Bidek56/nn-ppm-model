@@ -1,4 +1,6 @@
 
-*.ipynb
 debug.log
 *.db
+.ipynb_checkpoints/jumbo_model-checkpoint.ipynb
+.ipynb_checkpoints/pools_dataset_builder-checkpoint.ipynb
+.ipynb_checkpoints/model_fitting-checkpoint.ipynb
