@@ -49,6 +49,9 @@ def bondsAttributesQuery(observationWindow,CUSIPs='3136BCJH4: 3136BCUZ1: 3136BCJ
     return "Type=timeSeriesBy,x=asofdate, NonBlank=yes/y=cpr1: cpr3: cpr6: cpr12: cpr24: cprlife: smm: origb: currb: factor: ocoupon: coupon: owac: wac: wam: age: olnsz: clnsz: aols: waols: onloans: cnloans: osato: csato: oltv: cltv: fico: spread: %CashWindow: %Majors: PurpPctpurchase: PurpPctrefi: ChannelPctBroker: ChannelPctCorr: ChannelPctRetail: OccPctinvestor: OccPctowner: PropUnitsPct2-4: StatePctAK: StatePctAL: StatePctAR: StatePctAZ: StatePctCA: StatePctCO: StatePctCT: StatePctDC: StatePctDE: StatePctFL: StatePctGA: StatePctGU: StatePctHI: StatePctIA: StatePctID: StatePctIL: StatePctIN: StatePctKS: StatePctKY: StatePctLA: StatePctMA: StatePctMD: StatePctME: StatePctMI: StatePctMN: StatePctMO: StatePctMS: StatePctMT: StatePctNC: StatePctND: StatePctNE: StatePctNH: StatePctNJ: StatePctNM: StatePctNV: StatePctNY: StatePctOH: StatePctOK: StatePctOR: StatePctPA: StatePctPR: StatePctRI: StatePctSC: StatePctSD: StatePctTN: StatePctTX: StatePctUT: StatePctVA: StatePctVI: StatePctVT: StatePctWA: StatePctWI: StatePctWV: StatePctWY: SellerPctAMRHT: SellerPctALS: SellerPctCAFULL: SellerPctCNTL: SellerPctCITIZ: SellerPct53: SellerPctFIR: SellerPctFRDOM: SellerPctGUILD: SellerPctCHASE: SellerPctLLSL: SellerPctMATRX: SellerPctNCM: SellerPctNATIONSTAR: SellerPctNRESM: SellerPctPNYMAC: SellerPctPILOSI: SellerPctQUICK: SellerPctREG: SellerPctRMSC: SellerPctUNSHFI: SellerPctWFHM, Agency=umbs, MortgageType=fix, Program=sf, umbs=yes, DateWindowPeriod_by=cont: range: " + observationWindow + ": 1m, CusipPN_by=list: grid: " + CUSIPs + ", JointDistribution=DateWindowPeriod_by: CusipPN_by,"
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 
+
+
+
 def fullQueryRun(queryBuilder,observationWindows,issueWindow,outCSV,program='30'):
 
     starttime = time.perf_counter()
