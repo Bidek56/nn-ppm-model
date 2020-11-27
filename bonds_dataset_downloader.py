@@ -49,9 +49,6 @@ def bondsAttributesQuery(observationWindow,CUSIPs='3136BCJH4: 3136BCUZ1: 3136BCJ
     return "Type=timeSeriesBy,x=asofdate, NonBlank=yes/y=cpr1: cpr3: cpr6: cpr12: cpr24: cprlife: smm: origb: currb: factor: ocoupon: coupon: owac: wac: wam: age: olnsz: clnsz: aols: waols: onloans: cnloans: osato: csato: oltv: cltv: fico: spread: %CashWindow: %Majors: PurpPctpurchase: PurpPctrefi: ChannelPctBroker: ChannelPctCorr: ChannelPctRetail: OccPctinvestor: OccPctowner: PropUnitsPct2-4: StatePctAK: StatePctAL: StatePctAR: StatePctAZ: StatePctCA: StatePctCO: StatePctCT: StatePctDC: StatePctDE: StatePctFL: StatePctGA: StatePctGU: StatePctHI: StatePctIA: StatePctID: StatePctIL: StatePctIN: StatePctKS: StatePctKY: StatePctLA: StatePctMA: StatePctMD: StatePctME: StatePctMI: StatePctMN: StatePctMO: StatePctMS: StatePctMT: StatePctNC: StatePctND: StatePctNE: StatePctNH: StatePctNJ: StatePctNM: StatePctNV: StatePctNY: StatePctOH: StatePctOK: StatePctOR: StatePctPA: StatePctPR: StatePctRI: StatePctSC: StatePctSD: StatePctTN: StatePctTX: StatePctUT: StatePctVA: StatePctVI: StatePctVT: StatePctWA: StatePctWI: StatePctWV: StatePctWY: SellerPctAMRHT: SellerPctALS: SellerPctCAFULL: SellerPctCNTL: SellerPctCITIZ: SellerPct53: SellerPctFIR: SellerPctFRDOM: SellerPctGUILD: SellerPctCHASE: SellerPctLLSL: SellerPctMATRX: SellerPctNCM: SellerPctNATIONSTAR: SellerPctNRESM: SellerPctPNYMAC: SellerPctPILOSI: SellerPctQUICK: SellerPctREG: SellerPctRMSC: SellerPctUNSHFI: SellerPctWFHM, Agency=umbs, MortgageType=fix, Program=sf, umbs=yes, DateWindowPeriod_by=cont: range: " + observationWindow + ": 1m, CusipPN_by=list: grid: " + CUSIPs + ", JointDistribution=DateWindowPeriod_by: CusipPN_by,"
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-
-
 def fullQueryRun(queryBuilder,observationWindows,issueWindow,outCSV,program='30'):
 
     starttime = time.perf_counter()
@@ -79,11 +76,7 @@ def fullQueryRun(queryBuilder,observationWindows,issueWindow,outCSV,program='30'
     print('elapsed time        : ',"%1.1f" % (endtime - starttime),'sec /',"%1.2f" % ((endtime - starttime)/60),'min')
     print('--------------------------------------------------------------------------------------')
 
-#------------------------------------------------------------------------------------------------------
-    
-#------------------------------------------------------------------------------------------------------
-#---------------------------------- MAIN --------------------------------------------------------------
-#------------------------------------------------------------------------------------------------------    
+#------------------------------------------------------------------------------------------------------   
     
 if __name__ == "__main__":
     
@@ -91,15 +84,12 @@ if __name__ == "__main__":
     data_dir    = "Z:/Python Scripts/cpr-cdr runners/pools dataset/data"
     
     todaysDate = dt.datetime.now(); 
-        
-    issue_periods = list(pd.Series(pd.date_range('2010-01-01',todaysDate,freq='M'),name='Issue Dates').apply(lambda x: x.strftime('%Y%m')))
     
-    observation_periods = list(map(lambda x: str(x) + '01: ' + str(x) + '12',range(2010,2021,1)))
-#    observation_periods = ['202002:202010']
+    observation_periods = ['202001:202010']
 #    observation_periods.append('current: current')
 
-    #------------------------------------------------------------------------------------------------------   
-    program = 'jumbo30'
+    
+
     # download pool attributes data
     for i in range(len(issue_periods)):
         if i<1e6:
@@ -118,38 +108,5 @@ if __name__ == "__main__":
             fullQueryRun(poolAttributesQuery,this_observ_periods,issPeriod,data_dir + "/pools attributes/pools_attributes_issued_" + issPeriod + ".csv",program)
             #------------------------------------------------------------------------------------------------------
     #------------------------------------------------------------------------------------------------------  
-    # download pool geographical data
-    for i in range(len(issue_periods)):
-        if i<1e6:
-            issPeriod = issue_periods[i]
-            year_of_issue = issPeriod[0:4]
-            this_observ_periods = list()
-            for ob_period in observation_periods:
-                ob_period_start = ob_period.split(":")[0]
-                if ob_period_start != 'current':
-                    ob_period_year = ob_period_start[0:4]
-                    if int(year_of_issue) <= int(ob_period_year):
-                        this_observ_periods.append(ob_period)
-#            this_observ_periods.append(observation_periods[-1])
-            #------------------------------------------------------------------------------------------------------
-            fullQueryRun(geoPctQuery,this_observ_periods,issPeriod,data_dir + "/geo pct/pools_geo_pct_issued_" + issPeriod + ".csv",program)
-            #------------------------------------------------------------------------------------------------------            
-    #------------------------------------------------------------------------------------------------------
-    # download pool seller pct data
-    for i in range(len(issue_periods)):
-        if i<1e6:
-            issPeriod = issue_periods[i]
-            year_of_issue = issPeriod[0:4]
-            this_observ_periods = list()
-            for ob_period in observation_periods:
-                ob_period_start = ob_period.split(":")[0]
-                if ob_period_start != 'current':
-                    ob_period_year = ob_period_start[0:4]
-                    if int(year_of_issue) <= int(ob_period_year):
-                        this_observ_periods.append(ob_period)
-#            this_observ_periods.append(observation_periods[-1])
-            #------------------------------------------------------------------------------------------------------
-            fullQueryRun(poolSellerPctQuery,this_observ_periods,issPeriod,data_dir + "/seller pct/pools_attributes_issued_" + issPeriod + ".csv",program)
-            #------------------------------------------------------------------------------------------------------
     
     #------------------------------------------------------------------------------------------------------
