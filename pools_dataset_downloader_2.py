@@ -28,6 +28,8 @@ def editQuery(newQuery,spreadsheet):
     wb.close()
     app.kill()
 
+
+
 def pickupResults(spreadsheet,outCSV='out.csv',mode='w',outputSheet="Output",resultsLabel=""):
     xlsx    = pd.ExcelFile(spreadsheet)
     output  = pd.read_excel(xlsx,sheet_name=outputSheet)
