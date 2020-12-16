@@ -43,10 +43,10 @@ def pickupResults(spreadsheet,outCSV='out.csv',mode='w',outputSheet="Output",res
             print("unknown to_csv writing mode: " + mode)            
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------
-# Type=PoolByPool,x=poolnumber, NonBlank=yes/y=cpr1: cpr3: cpr6: cpr12: cpr24: cprlife: smm: DayCount: origb: currb: prevb: paydown: Prepay: factor: ocoupon: coupon: owac: wac: wam: age: aols: waols: onloans: cnloans: pcnloans: ppnloans: osato: csato: oltv: cltv: %cltv_80: %cltv_105: %cltv_125: %ccltv_80: %ccltv_105: %ccltv_125: fico: spread: %FedHold: %CMOHold: ODTI: CODTI: %CashWindow: %Majors: cusip: prefix: FnBrk_OCLTV: FnBrk_CCLTV: PurpPctpurchase: PurpPctrefi: ChannelPctBroker: ChannelPctCorr: ChannelPctRetail: OccPctinvestor: OccPctowner: PropUnitsPct2-4, Agency=fn, MortgageType=fix, Program=30, DateWindowPeriod=201901: 201912, Issuance=201901, poolType=bottom,
+# Type=PoolByPool,x=poolnumber, NonBlank=yes/y=cusip: prefix: spread: cpr1: cpr3: cpr6: cpr12: smm: DayCount: origb: currb: prevb: paydown: Prepay: factor: ocoupon: coupon: owac: wac: wam: age: aols: waols: cwals: owals: clnsz: olnsz: onloans: cnloans: pcnloans: ppnloans: osato: csato: oltv: cltv: FnBrk_OCLTV: FnBrk_CCLTV: fico: ODTI: CODTI: %CashWindow: %Majors: PurpPctpurchase: PurpPctrefi: ChannelPctBroker: ChannelPctCorr: ChannelPctRetail: OccPctowner: OccPct2ndHome: OccPctinvestor: PropUnitsPct2-4: Burnout: wac_min: wac_qtr1: wac_qtr3: wac_max: ofico_min: ofico_qtr1: ofico_qtr3: ofico_max: oltv_min: oltv_qtr1: oltv_qtr3: oltv_max: lnsz_min: lnsz_qtr1: lnsz_qtr3: lnsz_max: hpa3m: hpa1: hpa5: hpaLife: hpaPO3m: hpaPO1: hpaPO5: hpaPOLife, Agency=fn, MortgageType=fix, Program=30, DateWindowPeriod=202011, Issuance=201001: 202012,  poolType=bottom,
 def poolAttributesQuery(observationWindow,issueWindow,program='30'):
     print(observationWindow + ' | ' + issueWindow)
-    return "Type=PoolByPool,x=poolnumber, NonBlank=yes/y=cusip: prefix: spread: cpr1: cpr3: cpr6: cpr12: cpr24: cprlife: smm: DayCount: origb: currb: prevb: paydown: Prepay: factor: ocoupon: coupon: owac: wac: wam: age: aols: waols: onloans: cnloans: pcnloans: ppnloans: osato: csato: oltv: cltv: %cltv_80: %cltv_105: %cltv_125: %ccltv_80: %ccltv_105: %ccltv_125: fico: %FedHold: %CMOHold: ODTI: CODTI: %CashWindow: %Majors: FnBrk_OCLTV: FnBrk_CCLTV: PurpPctpurchase: PurpPctrefi: ChannelPctBroker: ChannelPctCorr: ChannelPctRetail: OccPctinvestor: OccPctowner: PropUnitsPct2-4, Agency=fn, MortgageType=fix, Program=" + program + ", DateWindowPeriod=" + observationWindow + ", Issuance=" + issueWindow + ", poolType=bottom,"
+    return "Type=PoolByPool,x=poolnumber, NonBlank=yes/y=cusip: prefix: spread: cpr1: cpr3: cpr6: cpr12: smm: DayCount: origb: currb: prevb: paydown: Prepay: factor: ocoupon: coupon: owac: wac: wam: age: aols: waols: cwals: owals: clnsz: olnsz: onloans: cnloans: pcnloans: ppnloans: osato: csato: oltv: cltv: FnBrk_OCLTV: FnBrk_CCLTV: fico: ODTI: CODTI: %CashWindow: %Majors: PurpPctpurchase: PurpPctrefi: ChannelPctBroker: ChannelPctCorr: ChannelPctRetail: OccPctowner: OccPct2ndHome: OccPctinvestor: PropUnitsPct2-4: Burnout: wac_min: wac_qtr1: wac_qtr3: wac_max: ofico_min: ofico_qtr1: ofico_qtr3: ofico_max: oltv_min: oltv_qtr1: oltv_qtr3: oltv_max: lnsz_min: lnsz_qtr1: lnsz_qtr3: lnsz_max: hpa3m: hpa1: hpa5: hpaLife: hpaPO3m: hpaPO1: hpaPO5: hpaPOLife, Agency=fn, MortgageType=fix, Program=" + program + ", DateWindowPeriod=" + observationWindow + ", Issuance=" + issueWindow + ", poolType=bottom,"
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 # Type=PoolByPool,x=poolnumber, NonBlank=yes/y=cusip: StatePoolPctAK: StatePoolPctAL: StatePoolPctAR: StatePoolPctAZ: StatePoolPctCA: StatePoolPctCO: StatePoolPctCT: StatePoolPctDC: StatePoolPctDE: StatePoolPctFL: StatePoolPctGA: StatePoolPctGU: StatePoolPctHI: StatePoolPctIA: StatePoolPctID: StatePoolPctIL: StatePoolPctIN: StatePoolPctKS: StatePoolPctKY: StatePoolPctLA: StatePoolPctMA: StatePoolPctMD: StatePoolPctME: StatePoolPctMI: StatePoolPctMN: StatePoolPctMO: StatePoolPctMS: StatePoolPctMT: StatePoolPctNC: StatePoolPctND: StatePoolPctNE: StatePoolPctNH: StatePoolPctNJ: StatePoolPctNM: StatePoolPctNV: StatePoolPctNY: StatePoolPctOH: StatePoolPctOK: StatePoolPctOR: StatePoolPctPA: StatePoolPctPR: StatePoolPctRI: StatePoolPctSC: StatePoolPctSD: StatePoolPctTN: StatePoolPctTX: StatePoolPctUT: StatePoolPctVA: StatePoolPctVI: StatePoolPctVT: StatePoolPctWA: StatePoolPctWI: StatePoolPctWV: StatePoolPctWY, Agency=fn, MortgageType=fix, Program=30, DateWindowPeriod=201001: current, Issuance=201001, poolType=bottom,
 def geoPctQuery(observationWindow,issueWindow,program='30'):
@@ -60,7 +60,7 @@ def poolSellerPctQuery(observationWindow,issueWindow,program='30'):
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------    
 
-def fullQueryRun(queryBuilder,observationWindows,issueWindow,outCSV,program='30'):
+def fullQueryRun(queryBuilder,observationWindows,issueWindows,outCSV,program='30'):
 
     starttime = time.perf_counter()
     
@@ -69,19 +69,20 @@ def fullQueryRun(queryBuilder,observationWindows,issueWindow,outCSV,program='30'
         os.remove(outCSV)
         
     for observation_window in observationWindows:
-        print('--------------------------------------------------------------------------------------')
-        print(dt.datetime.now().strftime("%A, %B %d, %Y, %I:%M%p"))
-    
-        query = queryBuilder(observation_window,issueWindow,program)
-        print(query)
+        for issue_window in issueWindows:
+            print('--------------------------------------------------------------------------------------')
+            print(dt.datetime.now().strftime("%A, %B %d, %Y, %I:%M%p"))
         
-        editQuery(query,spreadsheet);
-        print('                    :  query edited, running')
-        runKDSQuery(spreadsheet)
-        print('                    :  query finished, collecting')
-        pickupResults(spreadsheet,outCSV,mode='a',resultsLabel=issueWindow)
-        print('                    :  query results appended')
-        print('--------------------------------------------------------------------------------------')
+            query = queryBuilder(observation_window,issue_window,program)
+            print(query)
+            
+            editQuery(query,spreadsheet);
+            print('                    :  query edited, running')
+            runKDSQuery(spreadsheet)
+            print('                    :  query finished, collecting')
+            pickupResults(spreadsheet,outCSV,mode='a',resultsLabel="issue="+issue_window+" | observ="+observation_window)
+            print('                    :  query results appended')
+            print('--------------------------------------------------------------------------------------')
     
     endtime = time.perf_counter()
     print('elapsed time        : ',"%1.1f" % (endtime - starttime),'sec /',"%1.2f" % ((endtime - starttime)/60),'min')
@@ -95,8 +96,8 @@ def fullQueryRun(queryBuilder,observationWindows,issueWindow,outCSV,program='30'
     
 if __name__ == "__main__":
     
-    spreadsheet = "Z:/Python Scripts/cpr-cdr runners/pools dataset/KDS/kds_macro.xlsm"
-    data_dir    = "Z:/Python Scripts/cpr-cdr runners/pools dataset/data"
+    spreadsheet = "./KDS/kds_macro.xlsm"
+    data_dir    = "../data by factor date"
     
     todaysDate = dt.datetime.now(); 
         
