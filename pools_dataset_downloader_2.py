@@ -83,7 +83,9 @@ def fullQueryRun(queryBuilder,query_running_spreadsheet,observation_window,issue
     
 if __name__ == "__main__":
     
-    query_running_spreadsheet = "./KDS/kds_macro.xlsm"
+    # needs to be full path or Excel throws an exception saying macro doesn't exist
+    query_running_spreadsheet = "C:/Users/YuriTurygin/Desktop/NN-PPM/nn-ppm-model/KDS/kds_macro.xlsm"
+    
     data_dir    = "../data by factor date"
     
     todaysDate = dt.datetime.now(); 
@@ -99,49 +101,26 @@ if __name__ == "__main__":
     observation_periods.pop()
     
 
-    #------------------------------------------------------------------------------------------------------   
     #program = 'jumbo30'
     program = '30'
-    #------------------------------------------------------------------------------------------------------   
+
     # download pool attributes data
     for observation_window in observation_periods:
         for issue_window in issue_periods:
             fullQueryRun(poolAttributesQuery,query_running_spreadsheet,observation_window,issue_window,data_dir + "/pools attributes/pools_attributes_by_fct_date_" + observation_window + ".csv",program)
-    #------------------------------------------------------------------------------------------------------   
 
-    #------------------------------------------------------------------------------------------------------  
     # download pool geographical data
-    for i in range(len(issue_periods)):
-        if i<1e6:
-            issPeriod = issue_periods[i]
-            year_of_issue = issPeriod[0:4]
-            this_observ_periods = list()
-            for ob_period in observation_periods:
-                ob_period_start = ob_period.split(":")[0]
-                if ob_period_start != 'current':
-                    ob_period_year = ob_period_start[0:4]
-                    if int(year_of_issue) <= int(ob_period_year):
-                        this_observ_periods.append(ob_period)
-#            this_observ_periods.append(observation_periods[-1])
-            #------------------------------------------------------------------------------------------------------
-            fullQueryRun(geoPctQuery,this_observ_periods,issPeriod,data_dir + "/geo pct/pools_geo_pct_issued_" + issPeriod + ".csv",program)
-            #------------------------------------------------------------------------------------------------------            
-    #------------------------------------------------------------------------------------------------------
+    for observation_window in observation_periods:
+        for issue_window in issue_periods:
+            fullQueryRun(poolAttributesQuery,query_running_spreadsheet,observation_window,issue_window,data_dir + "/geo pct/pools_geo_pct_by_fct_date_" + observation_window + ".csv",program)
+
     # download pool seller pct data
-    for i in range(len(issue_periods)):
-        if i<1e6:
-            issPeriod = issue_periods[i]
-            year_of_issue = issPeriod[0:4]
-            this_observ_periods = list()
-            for ob_period in observation_periods:
-                ob_period_start = ob_period.split(":")[0]
-                if ob_period_start != 'current':
-                    ob_period_year = ob_period_start[0:4]
-                    if int(year_of_issue) <= int(ob_period_year):
-                        this_observ_periods.append(ob_period)
-#            this_observ_periods.append(observation_periods[-1])
-            #------------------------------------------------------------------------------------------------------
-            fullQueryRun(poolSellerPctQuery,this_observ_periods,issPeriod,data_dir + "/seller pct/pools_attributes_issued_" + issPeriod + ".csv",program)
-            #------------------------------------------------------------------------------------------------------
+    for observation_window in observation_periods:
+        for issue_window in issue_periods:
+            fullQueryRun(poolAttributesQuery,query_running_spreadsheet,observation_window,issue_window,data_dir + "/seller pct/pools_seller_pct_by_fct_date_" + observation_window + ".csv",program)
     
-    #------------------------------------------------------------------------------------------------------
+
+
+
+
+
