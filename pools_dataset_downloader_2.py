@@ -100,7 +100,6 @@ if __name__ == "__main__":
             observation_periods.append(str(y) + str(m))
     observation_periods.pop()
     
-
     #program = 'jumbo30'
     program = '30'
 
