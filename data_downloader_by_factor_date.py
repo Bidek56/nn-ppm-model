@@ -101,14 +101,13 @@ if __name__ == "__main__":
     observation_periods.pop()
     
 
-    #program = 'jumbo30'
+    program = 'jumbo30'
     program = '30'
 
     # download pool attributes data
     for observation_window in observation_periods:
-        if observation_window > '201701':
-            for issue_window in issue_periods:
-                fullQueryRun(poolAttributesQuery,query_running_spreadsheet,observation_window,issue_window,data_dir + "/pools attributes/pools_attributes_by_fct_date_" + observation_window + ".csv",program)
+        for issue_window in issue_periods:
+            fullQueryRun(poolAttributesQuery,query_running_spreadsheet,observation_window,issue_window,data_dir + "/pools attributes/pools_attributes_by_fct_date_" + observation_window + ".csv",program)
 
     # download pool geographical data
     for observation_window in observation_periods:
