@@ -5,3 +5,4 @@ debug.log
 .ipynb_checkpoints/pools_dataset_builder-checkpoint.ipynb
 .ipynb_checkpoints/model_fitting-checkpoint.ipynb
 KDS/~$kds_macro.xlsm
+.ipynb_checkpoints/dataset_builder_pools_by_factor_date-checkpoint.ipynb
