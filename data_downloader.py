@@ -92,7 +92,8 @@ if __name__ == "__main__":
         
     issue_periods = ['201001:202012']
     
-    observation_periods = ['202011']
+#    observation_periods = ['202011']
+#    observation_periods = ['201001']
     
     observation_periods = list()
     for y in range(2010,2021):
@@ -100,24 +101,29 @@ if __name__ == "__main__":
             observation_periods.append(str(y) + str(m))
     observation_periods.pop()
     
+    
+    Programs = ['30','jumbo30']
 
-    program = 'jumbo30'
-    program = '30'
+#    program = 'jumbo30'
+#    program = '30'
 
-    # download pool attributes data
-    for observation_window in observation_periods:
-        for issue_window in issue_periods:
-            fullQueryRun(poolAttributesQuery,query_running_spreadsheet,observation_window,issue_window,data_dir + "/pools attributes/pools_attributes_by_fct_date_" + observation_window + ".csv",program)
-
-    # download pool geographical data
-    for observation_window in observation_periods:
-        for issue_window in issue_periods:
-            fullQueryRun(geoPctQuery,query_running_spreadsheet,observation_window,issue_window,data_dir + "/geo pct/pools_geo_pct_by_fct_date_" + observation_window + ".csv",program)
-
-    # download pool seller pct data
-    for observation_window in observation_periods:
-        for issue_window in issue_periods:
-            fullQueryRun(poolSellerPctQuery,query_running_spreadsheet,observation_window,issue_window,data_dir + "/seller pct/pools_seller_pct_by_fct_date_" + observation_window + ".csv",program)
+    for program in Programs:
+        # download pool attributes data
+        for observation_window in observation_periods:
+            for issue_window in issue_periods:
+                fullQueryRun(poolAttributesQuery,query_running_spreadsheet,observation_window,issue_window,data_dir + "/" + program + "/pools attributes/" + program + "_pools_attributes_by_fct_date_" + observation_window + ".csv",program)
+    
+    for program in Programs:
+        # download pool geographical data
+        for observation_window in observation_periods:
+            for issue_window in issue_periods:
+                fullQueryRun(geoPctQuery,query_running_spreadsheet,observation_window,issue_window,data_dir + "/" + program + "/geo pct/" + program + "_pools_geo_pct_by_fct_date_" + observation_window + ".csv",program)
+    
+    for program in Programs:
+        # download pool seller pct data
+        for observation_window in observation_periods:
+            for issue_window in issue_periods:
+                fullQueryRun(poolSellerPctQuery,query_running_spreadsheet,observation_window,issue_window,data_dir + "/" + program + "/seller pct/" + program + "_pools_seller_pct_by_fct_date_" + observation_window + ".csv",program)
     
 
 
