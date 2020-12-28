@@ -68,7 +68,7 @@ def fullQueryRun(queryBuilder,query_running_spreadsheet,observation_window,issue
     query = queryBuilder(observation_window,issue_window,program)
     print(query)
     
-    editQuery(query,query_running_spreadsheet);
+    editQuery(query,query_running_spreadsheet)
     print('                    :  query edited, running')
     runKDSQuery(query_running_spreadsheet)
     print('                    :  query finished, collecting')
@@ -88,7 +88,7 @@ if __name__ == "__main__":
     
     data_dir    = "../data"
     
-    todaysDate = dt.datetime.now(); 
+    todaysDate = dt.datetime.now()
         
     issue_periods = ['201001:202012']
     
